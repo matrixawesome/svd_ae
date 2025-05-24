@@ -110,7 +110,8 @@ def evaluate(test_users, test_items, scores, train_mask, top_k=10):
     return hr_sum/user_counts, ndcg_sum/user_counts
 
 def main():
-    df, num_users, num_items = load_data('/kaggle/input/movielens-1m-dataset')
+    path = kagglehub.dataset_download("odedgolden/movielens-1m-dataset")
+    df, num_users, num_items = load_data(path)
     train_data, test_data = temporal_split(df)
     
     # create sparse matrices
